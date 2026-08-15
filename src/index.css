@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    font-size: 112.5%; /* Base 18px (scales rem font sizes up by +2pt) */
+  }
   body {
     background-color: #0A0D14;
     color: #F8FAFC;
