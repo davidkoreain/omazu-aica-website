@@ -1,17 +1,11 @@
 import React from 'react';
 import { 
   Building2, 
-  ShieldCheck, 
   AlertTriangle, 
   ArrowRight, 
   CheckCircle2, 
-  Layers, 
-  Cpu, 
   TrendingUp, 
-  Lock,
-  GitBranch,
-  Database,
-  Briefcase
+  Lock
 } from 'lucide-react';
 import { 
   FAILURE_POINTS, 
@@ -31,41 +25,53 @@ export const ConsultingView: React.FC<ConsultingViewProps> = ({
 }) => {
   return (
     <div className="space-y-24 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* HERO */}
-      <section className="pt-12 text-center max-w-4xl mx-auto">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-950/80 border border-blue-700/60 text-cyan-300 text-xs font-semibold mb-6">
-          <Building2 className="w-4 h-4 text-cyan-400" />
-          <span>OMAZU AX Framework &amp; Diagnostic 기반</span>
+      {/* HERO WITH VISUAL IMAGE */}
+      <section className="pt-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="lg:col-span-7 space-y-6 text-left">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-950/80 border border-blue-700/60 text-cyan-300 text-xs font-semibold">
+            <Building2 className="w-4 h-4 text-cyan-400" />
+            <span>OMAZU AX Framework &amp; Diagnostic 기반</span>
+          </div>
+
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+            AI 도입이 아니라, 우리 조직의<br />
+            <span className="gradient-text">업무 전환과 투자판단</span>을 설계합니다.
+          </h1>
+
+          <p className="text-base sm:text-lg text-cyan-300 font-semibold">
+            진단 → 설계 → Micro-PoC → 성과·Trust 검증 → Go / Conditional Go / No-Go
+          </p>
+
+          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            OMAZU AX Framework는 조직이 이미 가진 지식·데이터·업무흐름·업무시스템·전문성에서 출발합니다. 사람과 업무, 실행기반, Trust 조건을 분리해 진단하고, 최종 판단 기준은 “기술적으로 되는가”가 아니라 “실제로 성과가 나고, 안전하게 운영할 수 있으며, 투자할 가치가 있는가”입니다.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 pt-2">
+            <button
+              onClick={openInquiryModal}
+              className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold text-sm shadow-xl shadow-blue-600/30 transition-all flex items-center justify-center gap-2"
+            >
+              우리 조직 AX 진단·상담
+              <ArrowRight className="w-4 h-4" />
+            </button>
+            <button
+              onClick={openInquiryModal}
+              className="px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-cyan-300 font-bold text-sm transition-all flex items-center justify-center gap-2"
+            >
+              <Lock className="w-4 h-4" />
+              Fasoo 연계 상담
+            </button>
+          </div>
         </div>
 
-        <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">
-          AI 도입이 아니라, 우리 조직의<br />
-          <span className="gradient-text">업무 전환과 투자판단</span>을 설계합니다.
-        </h1>
-
-        <p className="text-base sm:text-lg text-cyan-300 font-semibold mb-6">
-          진단 → 설계 → Micro-PoC → 성과·Trust 검증 → Go / Conditional Go / No-Go
-        </p>
-
-        <p className="text-xs sm:text-sm text-slate-400 leading-relaxed mb-8 max-w-3xl mx-auto">
-          OMAZU AX Framework는 조직이 이미 가진 지식·데이터·업무흐름·업무시스템·전문성에서 출발합니다. 사람과 업무, 실행기반, Trust 조건을 분리해 진단하고, 최종 판단 기준은 “기술적으로 되는가”가 아니라 “실제로 성과가 나고, 안전하게 운영할 수 있으며, 투자할 가치가 있는가”입니다.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button
-            onClick={openInquiryModal}
-            className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold text-sm shadow-xl shadow-blue-600/30 transition-all flex items-center justify-center gap-2"
-          >
-            우리 조직 AX 진단·상담
-            <ArrowRight className="w-4 h-4" />
-          </button>
-          <button
-            onClick={openInquiryModal}
-            className="px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-cyan-300 font-bold text-sm transition-all flex items-center justify-center gap-2"
-          >
-            <Lock className="w-4 h-4" />
-            Fasoo 연계 상담
-          </button>
+        <div className="lg:col-span-5 relative">
+          <div className="rounded-3xl overflow-hidden border border-blue-500/30 shadow-2xl shadow-blue-500/10">
+            <img 
+              src="/images/b2b_ax_consulting.jpg" 
+              alt="B2B Enterprise AX Consulting Session" 
+              className="w-full h-auto object-cover"
+            />
+          </div>
         </div>
       </section>
 
@@ -94,7 +100,7 @@ export const ConsultingView: React.FC<ConsultingViewProps> = ({
               <h3 className="text-base font-bold text-white mb-2">
                 {item.title}
               </h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <p className="text-xs text-slate-300 leading-relaxed">
                 {item.desc}
               </p>
             </div>
@@ -130,7 +136,7 @@ export const ConsultingView: React.FC<ConsultingViewProps> = ({
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">
             1. AX 실행준비도 (진단영역)
           </h2>
-          <p className="text-xs sm:text-sm text-slate-400">
+          <p className="text-xs sm:text-sm text-slate-300">
             사람·업무·기반·Trust를 따로 보고 함께 판단합니다.
           </p>
         </div>
@@ -143,7 +149,7 @@ export const ConsultingView: React.FC<ConsultingViewProps> = ({
                   <span className="text-xs font-bold font-mono px-2.5 py-1 bg-blue-950 text-cyan-300 rounded border border-blue-800">
                     진단영역 0{idx + 1}
                   </span>
-                  <span className="text-xs text-slate-400 font-mono">
+                  <span className="text-xs text-slate-300 font-mono">
                     결과: {item.result}
                   </span>
                 </div>
@@ -165,7 +171,7 @@ export const ConsultingView: React.FC<ConsultingViewProps> = ({
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">
             2. 기업이 이미 가진 AX 자산 5영역에서 시작합니다
           </h2>
-          <p className="text-xs sm:text-sm text-slate-400">
+          <p className="text-xs sm:text-sm text-slate-300">
             "무엇을 AI에 맡길 것인가 ➔ 무엇을 근거로 일하게 할 것인가 ➔ 어떤 시스템과 연결할 것인가 ➔ 사람은 어디에서 판단·승인할 것인가 ➔ 무엇으로 성과를 검증할 것인가"를 연결합니다.
           </p>
         </div>
@@ -184,7 +190,7 @@ export const ConsultingView: React.FC<ConsultingViewProps> = ({
                   {asset.desc}
                 </div>
               </div>
-              <div className="pt-3 border-t border-slate-800 text-[11px] text-slate-400">
+              <div className="pt-3 border-t border-slate-800 text-xs text-slate-300">
                 역할: {asset.role}
               </div>
             </div>
@@ -198,7 +204,7 @@ export const ConsultingView: React.FC<ConsultingViewProps> = ({
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">
             3. 6단계 실행 로드맵 (Co-Build 방식)
           </h2>
-          <p className="text-xs sm:text-sm text-slate-400">
+          <p className="text-xs sm:text-sm text-slate-300">
             진단 결과가 교육·PoC·구축으로 끊기지 않고 이어집니다.
           </p>
         </div>
@@ -215,7 +221,7 @@ export const ConsultingView: React.FC<ConsultingViewProps> = ({
               <p className="text-xs text-slate-300 mb-4 leading-relaxed">
                 {s.desc}
               </p>
-              <div className="pt-3 border-t border-slate-800 text-[11px] text-cyan-300 flex items-center gap-1.5 font-mono">
+              <div className="pt-3 border-t border-slate-800 text-xs text-cyan-300 flex items-center gap-1.5 font-mono">
                 <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
                 <span>산출물: {s.output}</span>
               </div>
@@ -224,11 +230,11 @@ export const ConsultingView: React.FC<ConsultingViewProps> = ({
         </div>
       </section>
 
-      {/* BUSINESS VALUE VALIDATION & FASOO */}
-      <section className="bg-slate-900 border border-slate-800 rounded-3xl p-8 lg:p-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      {/* BUSINESS VALUE VALIDATION & SECURITY IMAGE */}
+      <section className="bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
           
-          <div className="space-y-4">
+          <div className="lg:col-span-7 p-8 lg:p-12 space-y-6">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-blue-950 text-cyan-300 text-xs font-mono font-bold border border-blue-800">
               <TrendingUp className="w-4 h-4 text-cyan-400" />
               BUSINESS VALUE VALIDATION
@@ -254,21 +260,24 @@ export const ConsultingView: React.FC<ConsultingViewProps> = ({
                 <span className="text-green-400 font-mono">Go · Conditional Go · No-Go</span>
               </div>
             </div>
+
+            <div className="pt-2">
+              <button
+                onClick={openInquiryModal}
+                className="py-4 px-8 bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold text-sm rounded-xl shadow-lg shadow-blue-500/25 transition-all"
+              >
+                기업 AX 진단 및 컨설팅 문의하기
+              </button>
+            </div>
           </div>
 
-          <div className="bg-slate-950 p-8 rounded-2xl border border-slate-800 text-center space-y-6">
-            <h4 className="text-xl font-bold text-white">
-              우리 조직의 AX 전환 준비도를 확인하세요
-            </h4>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              OMAZU 전문 컨설턴트가 4대 실행준비도와 업무 자산을 바탕으로 1:1 진단과 맞춤형 로드맵을 제안해 드립니다.
-            </p>
-            <button
-              onClick={openInquiryModal}
-              className="w-full py-4 px-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold text-sm rounded-xl shadow-lg shadow-blue-500/25 transition-all"
-            >
-              기업 AX 진단 및 컨설팅 문의하기
-            </button>
+          <div className="lg:col-span-5 h-full relative min-h-[300px]">
+            <img 
+              src="/images/security_data_trust.jpg" 
+              alt="Enterprise Trust Security Shield" 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-transparent to-transparent lg:block hidden" />
           </div>
 
         </div>
