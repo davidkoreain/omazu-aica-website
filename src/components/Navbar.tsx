@@ -1,12 +1,15 @@
-import React from 'react';
-import { Sparkles, ShieldCheck, ArrowRight, BookOpen, Building2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { Sparkles, ShieldCheck, ArrowRight, BookOpen, Building2, User as UserIcon, LogOut, ChevronDown } from 'lucide-react';
 import { BRAND } from '../data/content';
+import { useAuth } from '../context/AuthContext';
 
 interface NavbarProps {
   activeTab: 'landing' | 'consulting' | 'academy';
   setActiveTab: (tab: 'landing' | 'consulting' | 'academy') => void;
   openDiagnosticModal: () => void;
   openInquiryModal: () => void;
+  openAuthModal: (mode?: 'login' | 'signup') => void;
+  openMyPageModal: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -14,7 +17,12 @@ export const Navbar: React.FC<NavbarProps> = ({
   setActiveTab,
   openDiagnosticModal,
   openInquiryModal,
+  openAuthModal,
+  openMyPageModal,
 }) => {
+  const { user, isLoggedIn, logout } = useAuth();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
   return (
     <header className="sticky top-0 z-50 bg-[#0A0D14]/90 backdrop-blur-md border-b border-slate-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -79,7 +87,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
         </nav>
 
-        {/* Quick Actions */}
+        {/* Quick Actions & Auth */}
         <div className="flex items-center gap-3">
           <button
             onClick={openDiagnosticModal}
@@ -88,6 +96,76 @@ export const Navbar: React.FC<NavbarProps> = ({
             <ShieldCheck className="w-4 h-4 text-cyan-400" />
             AX 역량 진단
           </button>
+
+          {isLoggedIn && user ? (
+            /* Logged in User Dropdown */
+            <div className="relative">
+              <button
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className="flex items-center gap-2 bg-slate-900 hover:bg-slate-800 border border-slate-700 px-3 py-1.5 rounded-xl transition-all"
+              >
+                <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-white font-bold text-xs">
+                  {user.name.slice(0, 1)}
+                </div>
+                <span className="text-xs font-bold text-slate-200 hidden sm:block">
+                  {user.name} 님
+                </span>
+                <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
+              </button>
+
+              {dropdownOpen && (
+                <div 
+                  onMouseLeave={() => setDropdownOpen(false)}
+                  className="absolute right-0 mt-2 w-48 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl py-2 z-50 text-xs animate-in fade-in zoom-in duration-150"
+                >
+                  <div className="px-4 py-2 border-b border-slate-800">
+                    <p className="font-bold text-white truncate">{user.name}</p>
+                    <p className="text-[11px] text-slate-400 truncate">{user.email}</p>
+                  </div>
+                  <button
+                    onClick={() => { setDropdownOpen(false); openMyPageModal(); }}
+                    className="w-full text-left px-4 py-2 hover:bg-slate-800 text-slate-200 font-medium flex items-center gap-2"
+                  >
+                    <UserIcon className="w-3.5 h-3.5 text-cyan-400" />
+                    마이페이지 &amp; 내 정보
+                  </button>
+                  <button
+                    onClick={() => { setDropdownOpen(false); openDiagnosticModal(); }}
+                    className="w-full text-left px-4 py-2 hover:bg-slate-800 text-slate-200 font-medium flex items-center gap-2"
+                  >
+                    <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
+                    AX 진단 결과 보기
+                  </button>
+                  <div className="border-t border-slate-800 mt-1 pt-1">
+                    <button
+                      onClick={() => { setDropdownOpen(false); logout(); }}
+                      className="w-full text-left px-4 py-2 hover:bg-rose-950/40 text-rose-400 font-medium flex items-center gap-2"
+                    >
+                      <LogOut className="w-3.5 h-3.5" />
+                      로그아웃
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            /* Logged out Auth Buttons */
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => openAuthModal('login')}
+                className="text-xs text-slate-300 hover:text-white px-3 py-2 rounded-lg font-medium transition-colors"
+              >
+                로그인
+              </button>
+              <button
+                onClick={() => openAuthModal('signup')}
+                className="text-xs bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-700 font-bold px-3.5 py-2 rounded-lg transition-all"
+              >
+                회원가입
+              </button>
+            </div>
+          )}
+
           <button
             onClick={openInquiryModal}
             className="flex items-center gap-2 text-sm bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-semibold px-4 py-2.5 rounded-lg shadow-lg shadow-blue-500/25 transition-all hover:scale-105 active:scale-95"
