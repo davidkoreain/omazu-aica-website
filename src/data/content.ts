@@ -6,14 +6,14 @@ export const BRAND = {
   email: "aica@omazu.ai",
   sloganPrimary: "AI로 현장의 문제를 함께 풉니다.",
   sloganSecondary: "Original Minds, Amplified by AI.",
-  description: "OMAZU는 자체 AX Framework와 Diagnotics를 기반으로 기업의 업무 전환을 설계·검증하고, Academy에서는 실제 과제를 AI Workflow와 결과물로 연결합니다.",
+  description: "OMAZU AICA의 AX Framework와 Diagnotic을 기반으로 현재 수준과 실제 과제를 먼저 확인합니다. 기업은 업무·역량·데이터·시스템·Trust 조건을 진단하고, AI가 일할 구조를 설계한 뒤 교육이 결합된 Micro-PoC와 Business Value Validation으로 도입·확산 여부를 검증합니다. 개인은 사전진단과 2DAYS Sprint를 통해 실제 업무 또는 창작 결과물과 재사용 가능한 Workflow·Template까지 완성합니다.",
   fasooNotice: "OMAZU는 고객의 업무와 AX 실행조건을 진단하고 업무 재설계·PoC 기획·구축 PM을 수행합니다. Fasoo와의 MOU를 기반으로 필요한 경우 Enterprise AI·Data·Trust 기술의 적용 가능성과 기술검증 범위를 함께 검토합니다. 프로젝트의 기술 구성은 고객 환경과 과제 특성에 따라 다른 LLM·Agent Tool·기존 시스템·Custom Development와 조합할 수 있습니다."
 };
 
 export const HOME_HERO = {
   headline: "기업의 AX를 설계하고, 사람의 일하는 방식을 바꿉니다.",
   subcopy: "AI로 현장의 문제를 함께 풉니다.",
-  body: "OMAZU는 자체 AX Framework와 Diagnotics를 기반으로 기업의 업무 전환을 설계·검증하고, Academy에서는 실제 과제를 AI Workflow와 결과물로 연결합니다."
+  body: "OMAZU AICA의 AX Framework와 Diagnotic을 기반으로 현재 수준과 실제 과제를 먼저 확인합니다. 기업은 업무·역량·데이터·시스템·Trust 조건을 진단하고, AI가 일할 구조를 설계한 뒤 교육이 결합된 Micro-PoC와 Business Value Validation으로 도입·확산 여부를 검증합니다. 개인은 사전진단과 2DAYS Sprint를 통해 실제 업무 또는 창작 결과물과 재사용 가능한 Workflow·Template까지 완성합니다."
 };
 
 export const WHY_OMAZU_POINTS = [
