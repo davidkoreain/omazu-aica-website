@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OMAZU AICA | 기업의 AX를 설계하고, 사람의 일하는 방식을 바꿉니다</title>
+<meta name="description" content="OMAZU AICA는 자체 AX Framework와 Diagnostic을 기반으로 기업의 업무 전환을 진단·설계·검증하고, Micro-PoC와 Business Value Validation을 통해 다음 투자를 판단합니다.">
+<meta property="og:title" content="OMAZU AICA | 기업의 AX를 설계하고, 사람의 일하는 방식을 바꿉니다">
+<meta property="og:description" content="OMAZU AICA는 자체 AX Framework와 Diagnostic을 기반으로 기업의 업무 전환을 진단·설계·검증하고, Micro-PoC와 Business Value Validation을 통해 다음 투자를 판단합니다.">
+<meta property="og:type" content="website">
+<meta name="robots" content="noindex"><!-- Preview 전용. Production(aica.omazu.ai) 배포 시 제거 -->
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#12213F;
+  --blue:#2451D6;
+  --ink:#14161A;
+  --ink-2:#5A626E;
+  --ink-3:#8A919C;
+  --rule:#E3E6EA;
+  --bg:#FFFFFF;
+  --bg-2:#F7F8FA;
+  --max:1160px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Noto Sans KR',sans-serif;
+  font-size:17px; line-height:1.75; letter-spacing:-0.01em;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;}
+a{color:inherit;}
+.wrap{max-width:var(--max); margin:0 auto; padding:0 40px;}
+
+/* ---------- mono utility ---------- */
+.mono{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink-3); font-weight:500;
+}
+
+/* ---------- header ---------- */
+.hdr{
+  position:sticky; top:0; z-index:60; background:rgba(255,255,255,.92);
+  backdrop-filter:saturate(180%) blur(12px); border-bottom:1px solid var(--rule);
+}
+.hdr-in{max-width:var(--max); margin:0 auto; padding:0 40px; height:68px;
+  display:flex; align-items:center; justify-content:space-between; gap:32px;}
+.brand{display:flex; align-items:baseline; gap:10px; text-decoration:none;}
+.brand b{font-size:19px; font-weight:700; letter-spacing:-0.02em; color:var(--navy);}
+.brand span{font-size:12px; color:var(--ink-3); letter-spacing:0;}
+.nav{display:flex; gap:34px; margin-left:auto;}
+.nav a{
+  text-decoration:none; font-size:14.5px; font-weight:500; color:var(--ink-2);
+  padding:24px 0; position:relative; letter-spacing:.01em;
+}
+.nav a:hover{color:var(--ink);}
+.nav a.on{color:var(--navy); font-weight:600;}
+.nav a.on::after{content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px; background:var(--navy);}
+.hdr .btn-p{margin-left:8px;}
+
+/* ---------- buttons ---------- */
+.btn-p,.btn-s{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:46px; padding:0 24px; border-radius:4px; text-decoration:none;
+  font-size:15px; font-weight:600; letter-spacing:-0.005em; transition:all .16s ease;
+  border:1px solid transparent; white-space:nowrap;
+}
+.btn-p{background:var(--navy); color:#fff;}
+.btn-p:hover{background:#0B1730;}
+.btn-s{background:transparent; color:var(--navy); border-color:#C6CBD3;}
+.btn-s:hover{border-color:var(--navy);}
+.hdr .btn-p{height:40px; padding:0 18px; font-size:14px;}
+.tlink{
+  display:inline-flex; align-items:center; gap:7px; text-decoration:none;
+  color:var(--blue); font-size:15px; font-weight:600;
+  border-bottom:1px solid transparent; padding-bottom:1px;
+}
+.tlink:hover{border-bottom-color:var(--blue);}
+.tlink::after{content:"→"; font-size:14px;}
+
+/* ---------- sections ---------- */
+section{padding:120px 0; border-top:1px solid var(--rule);}
+section.alt{background:var(--bg-2);}
+section.nb{border-top:0;}
+.eyebrow{margin:0 0 22px;}
+h1,h2,h3,h4{margin:0; letter-spacing:-0.035em; font-weight:700; color:var(--navy);}
+h1{font-size:60px; line-height:1.24;}
+h2{font-size:38px; line-height:1.32; letter-spacing:-0.03em;}
+h3{font-size:20px; line-height:1.45; letter-spacing:-0.02em;}
+h4{font-size:16.5px; line-height:1.5; letter-spacing:-0.015em; color:var(--ink);}
+.lead{font-size:20px; line-height:1.65; color:var(--ink); margin:26px 0 0; max-width:62ch; letter-spacing:-0.015em;}
+p.body{font-size:16.5px; line-height:1.8; color:var(--ink-2); margin:20px 0 0; max-width:66ch;}
+.sec-head{max-width:70ch; margin-bottom:64px;}
+.sec-head p.body{margin-top:22px;}
+
+/* ---------- hero ---------- */
+.hero{padding:132px 0 116px; border-top:0;}
+.hero h1{max-width:15ch;}
+.hero .sub{
+  font-size:22px; font-weight:600; color:var(--blue);
+  margin:28px 0 0; letter-spacing:-0.02em;
+}
+.hero .body{max-width:60ch;}
+.hero-cta{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:44px;}
+.hero-cta .tlink{margin-left:10px;}
+
+/* proof strip */
+.proof{
+  display:flex; flex-wrap:wrap; gap:0 44px; margin-top:76px;
+  padding-top:26px; border-top:1px solid var(--rule);
+}
+.proof span{
+  font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-3); padding:6px 0;
+}
+
+/* ---------- two-path split ---------- */
+.split{display:grid; grid-template-columns:1fr 1fr; gap:0; border-top:1px solid var(--rule);}
+.split > div{padding:56px 56px 56px 0;}
+.split > div + div{padding-left:56px; border-left:1px solid var(--rule);}
+.split .mono{margin-bottom:18px; display:block;}
+.split h3{font-size:26px; letter-spacing:-0.03em;}
+.split p{font-size:16.5px; line-height:1.8; color:var(--ink-2); margin:18px 0 30px; max-width:42ch;}
+
+/* ---------- signature: approach rail ---------- */
+.lenses{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--rule);
+  border:1px solid var(--rule); margin-bottom:0;}
+.lens{background:var(--bg); padding:24px 22px 26px;}
+.lens .mono{font-size:10px; display:block; margin-bottom:9px;}
+.lens b{display:block; font-size:15.5px; font-weight:600; letter-spacing:-0.02em; color:var(--navy);}
+.lens span{display:block; font-size:13.5px; line-height:1.6; color:var(--ink-2); margin-top:7px;}
+.converge{height:56px; position:relative;}
+.converge::before{content:""; position:absolute; left:12.5%; right:12.5%; top:0; height:1px; background:var(--rule);}
+.converge::after{content:""; position:absolute; left:50%; top:0; bottom:0; width:1px; background:var(--rule);}
+.conv-tick{position:absolute; top:0; width:1px; height:14px; background:var(--rule);}
+
+.rail{position:relative; padding-top:34px;}
+.rail::before{content:""; position:absolute; top:0; left:0; right:0; height:1px; background:var(--navy); opacity:.22;}
+.stages{display:grid; grid-template-columns:repeat(3,1fr); gap:0;}
+.stage{position:relative; padding:0 40px 0 0;}
+.stage + .stage{padding-left:40px;}
+.stage::before{content:""; position:absolute; top:-37px; left:0; width:7px; height:7px; background:var(--navy);}
+.stage + .stage::before{left:40px;}
+.stage .mono{display:block; color:var(--navy); font-size:10.5px; margin-bottom:12px;}
+.stage h4{font-size:21px; font-weight:700; color:var(--navy); letter-spacing:-0.025em;}
+.stage p{font-size:15px; line-height:1.75; color:var(--ink-2); margin:12px 0 0; max-width:34ch;}
+.gate{
+  margin-top:52px; padding-top:26px; border-top:1px solid var(--rule);
+  display:flex; flex-wrap:wrap; align-items:baseline; gap:14px 26px;
+}
+.gate .mono{color:var(--ink-3);}
+.gate b{font-size:17px; font-weight:600; color:var(--navy); letter-spacing:-0.02em;}
+.gate em{font-style:normal; color:var(--ink-3); font-size:15px;}
+
+/* ---------- list rows (no cards) ---------- */
+.rows{border-top:1px solid var(--rule);}
+.row{display:grid; grid-template-columns:64px 1fr 1.35fr; gap:32px;
+  padding:30px 0; border-bottom:1px solid var(--rule); align-items:baseline;}
+.row .mono{font-size:11px; color:var(--ink-3);}
+.row h4{font-size:17.5px; color:var(--navy); font-weight:600;}
+.row p{margin:0; font-size:15.5px; line-height:1.75; color:var(--ink-2);}
+
+/* ---------- concept grid ---------- */
+.grid4{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--rule);
+  border:1px solid var(--rule);}
+.grid4 > div{background:var(--bg); padding:38px 36px;}
+section.alt .grid4 > div{background:var(--bg-2);}
+.grid4 h4{font-size:18px; color:var(--navy); font-weight:700;}
+.grid4 .mono{display:block; font-size:10px; margin-bottom:11px;}
+.grid4 p{margin:12px 0 0; font-size:15.5px; line-height:1.75; color:var(--ink-2); max-width:40ch;}
+
+/* ---------- diagnostic tiers ---------- */
+.tiers{display:grid; grid-template-columns:1fr 1fr; gap:0; border-top:1px solid var(--rule);}
+.tiers > div{padding:44px 48px 44px 0;}
+.tiers > div + div{padding-left:48px; border-left:1px solid var(--rule);}
+.tiers h3{font-size:22px;}
+.tiers ul{margin:22px 0 0; padding:0; list-style:none;}
+.tiers li{font-size:15.5px; line-height:1.7; color:var(--ink-2); padding:9px 0 9px 16px; position:relative;}
+.tiers li::before{content:""; position:absolute; left:0; top:17px; width:5px; height:1px; background:var(--ink-3);}
+.notice{
+  margin-top:40px; padding:22px 26px; background:var(--bg-2);
+  border-left:2px solid var(--navy); font-size:14.5px; line-height:1.75; color:var(--ink-2);
+}
+section.alt .notice{background:#EFF1F4;}
+
+/* ---------- compare table ---------- */
+table.cmp{width:100%; border-collapse:collapse; margin-top:8px;}
+table.cmp th,table.cmp td{
+  text-align:left; padding:20px 24px; border-bottom:1px solid var(--rule);
+  font-size:15.5px; line-height:1.7; vertical-align:top;
+}
+table.cmp th{
+  font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-3); font-weight:500; border-bottom:1px solid var(--navy);
+  padding-bottom:14px;
+}
+table.cmp td:first-child{color:var(--ink-3); width:38%;}
+table.cmp td:last-child{color:var(--ink); font-weight:500;}
+table.cmp th:first-child{width:38%;}
+
+
+/* ---------- v2.1 methodology proof ---------- */
+.method-proof{
+  display:grid; grid-template-columns:repeat(4,1fr);
+  margin-top:76px; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+}
+.method-proof > div{padding:23px 22px 23px 0;}
+.method-proof > div + div{padding-left:22px; border-left:1px solid var(--rule);}
+.method-proof b{
+  display:block; font-size:17px; font-weight:650; color:var(--navy);
+  letter-spacing:-0.025em;
+}
+.method-proof span{
+  display:block; margin-top:5px;
+  font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--ink-3);
+}
+
+/* five assets — names only */
+.asset-line{
+  margin-top:58px; padding:22px 0;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+}
+.asset-line .mono{display:block; margin-bottom:13px;}
+.asset-names{
+  display:flex; flex-wrap:wrap; gap:10px 28px;
+  font-size:15px; color:var(--navy); font-weight:600; letter-spacing:-0.015em;
+}
+.asset-names span{white-space:nowrap;}
+
+/* output chain */
+.output-chain{
+  margin-top:54px; padding-top:24px; border-top:1px solid var(--rule);
+}
+.output-chain .mono{display:block; margin-bottom:14px;}
+.output-flow{
+  display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px;
+  color:var(--navy); font-size:14.5px; font-weight:600;
+}
+.output-flow em{font-style:normal; color:var(--ink-3); font-weight:400;}
+
+/* why omazu */
+.why-grid{
+  display:grid; grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+}
+.why-item{padding:42px 42px 42px 0;}
+.why-item + .why-item{padding-left:42px; border-left:1px solid var(--rule);}
+.why-item .mono{display:block; margin-bottom:14px;}
+.why-item h3{font-size:23px; letter-spacing:-0.025em;}
+.why-item p{
+  margin:15px 0 0; font-size:15.5px; line-height:1.78; color:var(--ink-2);
+}
+
+/* reference */
+.reference-band{border-top:1px solid var(--rule);}
+.ref-row{
+  display:grid; grid-template-columns:190px 1fr;
+  gap:42px; padding:24px 0; border-bottom:1px solid var(--rule);
+  align-items:baseline;
+}
+.ref-row b{font-size:15px; color:var(--navy); font-weight:650;}
+.ref-row p{margin:0; font-size:14.5px; line-height:1.75; color:var(--ink-2);}
+.ref-note{
+  margin-top:30px; font-size:13.5px; color:var(--ink-3); line-height:1.7;
+}
+
+@media (max-width:1000px){
+  .method-proof{grid-template-columns:1fr 1fr;}
+  .method-proof > div:nth-child(3){border-left:0; padding-left:0; border-top:1px solid var(--rule);}
+  .method-proof > div:nth-child(4){border-top:1px solid var(--rule);}
+  .why-grid{grid-template-columns:1fr;}
+  .why-item{padding:32px 0;}
+  .why-item + .why-item{padding-left:0; border-left:0; border-top:1px solid var(--rule);}
+}
+@media (max-width:640px){
+  .method-proof{grid-template-columns:1fr;}
+  .method-proof > div,.method-proof > div + div{
+    padding:18px 0; border-left:0; border-top:1px solid var(--rule);
+  }
+  .method-proof > div:first-child{border-top:0;}
+  .ref-row{grid-template-columns:1fr; gap:6px;}
+}
+
+/* ---------- final cta ---------- */
+.final{background:var(--navy); color:#fff; padding:112px 0; border-top:0;}
+.final h2{color:#fff; max-width:19ch;}
+.final p{color:#B6BECC; font-size:18px; line-height:1.7; margin:24px 0 0; max-width:52ch;}
+.final .row-cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:44px;}
+.final .btn-p{background:#fff; color:var(--navy);}
+.final .btn-p:hover{background:#E9ECF1;}
+.final .btn-s{color:#fff; border-color:rgba(255,255,255,.34);}
+.final .btn-s:hover{border-color:#fff;}
+
+/* ---------- footer ---------- */
+.ftr{padding:76px 0 44px; border-top:1px solid var(--rule); background:var(--bg);}
+.ftr-top{display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:48px;}
+.ftr-brand b{font-size:18px; font-weight:700; color:var(--navy); letter-spacing:-0.02em;}
+.ftr-brand p{font-size:14px; line-height:1.7; color:var(--ink-2); margin:14px 0 0; max-width:34ch;}
+.ftr-col .mono{display:block; margin-bottom:16px;}
+.ftr-col a{display:block; text-decoration:none; font-size:14.5px; color:var(--ink-2); padding:5px 0;}
+.ftr-col a:hover{color:var(--navy);}
+.ftr-btm{
+  margin-top:60px; padding-top:24px; border-top:1px solid var(--rule);
+  display:flex; flex-wrap:wrap; gap:8px 26px; justify-content:space-between;
+  font-size:13px; color:var(--ink-3);
+}
+.ftr-btm a{color:var(--ink-3); text-decoration:none;}
+.ftr-btm a:hover{color:var(--navy);}
+
+/* ---------- responsive ---------- */
+@media (max-width:1000px){
+  h1{font-size:44px;} h2{font-size:31px;}
+  .hero{padding:88px 0 76px;}
+  section{padding:88px 0;}
+  .nav{display:none;}
+  .split,.tiers{grid-template-columns:1fr;}
+  .split > div{padding:40px 0;}
+  .split > div + div{padding-left:0; border-left:0; border-top:1px solid var(--rule);}
+  .tiers > div{padding:36px 0;}
+  .tiers > div + div{padding-left:0; border-left:0; border-top:1px solid var(--rule);}
+  .lenses{grid-template-columns:1fr 1fr;}
+  .stages{grid-template-columns:1fr;}
+  .stage{padding:0 0 34px 0;}
+  .stage + .stage{padding-left:0; padding-top:34px; border-top:1px solid var(--rule);}
+  .stage::before{display:none;}
+  .stage + .stage::before{display:none;}
+  .converge{display:none;}
+  .rail{padding-top:28px;}
+  .grid4{grid-template-columns:1fr;}
+  .ftr-top{grid-template-columns:1fr; gap:36px;}
+  .row{grid-template-columns:1fr; gap:8px; padding:24px 0;}
+}
+@media (max-width:640px){
+  body{font-size:16px;}
+  .wrap,.hdr-in{padding:0 20px;}
+  h1{font-size:33px; letter-spacing:-0.03em;}
+  h2{font-size:26px;}
+  .hero .sub{font-size:18px;}
+  .lead{font-size:18px;}
+  .lenses{grid-template-columns:1fr;}
+  .hero-cta{flex-direction:column; align-items:stretch;}
+  .hero-cta .btn-p,.hero-cta .btn-s{width:100%;}
+  .hero-cta .tlink{margin-left:0; margin-top:6px;}
+  table.cmp th,table.cmp td{padding:14px 0; font-size:14.5px;}
+  table.cmp td:first-child,table.cmp th:first-child{width:44%;}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important; transition:none !important; scroll-behavior:auto !important;}
+}
+a:focus-visible,button:focus-visible{outline:2px solid var(--blue); outline-offset:3px;}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <div class="hdr-in">
+    <a class="brand" href="index.html"><b>OMAZU AICA</b><span>오마주 AI 컨설팅 &amp; 아카데미</span></a>
+    <nav class="nav">
+      <a href="index.html" class="on">HOME</a>
+      <a href="consulting.html">CONSULTING</a>
+      <a href="academy.html">ACADEMY</a>
+    </nav>
+    <a class="btn-p" href="#contact">상담 신청</a>
+  </div>
+</header>
+
+<section class="hero nb">
+  <div class="wrap">
+    <h1>기업의 AX를 설계하고,<br>사람의 일하는 방식을 바꿉니다.</h1>
+    <p class="sub">AI로 현장의 문제를 함께 풉니다.</p>
+    <p class="body">OMAZU AICA는 자체 AX Framework와 Diagnostic을 기반으로 기업의 업무 전환을 진단·설계·검증합니다. Academy에서는 실제 과제를 AI와 함께 해결하고, 다시 사용할 수 있는 Workflow와 결과물로 완성합니다.</p>
+    <div class="hero-cta">
+      <a class="btn-p" href="#contact">상담 신청</a>
+      <a class="btn-s" href="academy.html">Academy 보기</a>
+      <a class="tlink" href="#approach">OMAZU의 방식 보기</a>
+    </div>
+    <div class="method-proof" aria-label="OMAZU methodology highlights">
+      <div><b>5 AX Assets</b><span>Knowledge · Data · Workflow · Application · Expertise</span></div>
+      <div><b>4 Diagnostic Domains</b><span>People · Work · Foundation · Trust</span></div>
+      <div><b>3-Layer Framework</b><span>Condition · Design · Validate</span></div>
+      <div><b>Business Value Decision</b><span>Go · Conditional Go · No-Go</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono eyebrow">Services</span>
+      <h2>두 가지 방식으로 AI 전환을 실행합니다.</h2>
+    </div>
+    <div class="split">
+      <div>
+        <span class="mono">Consulting</span>
+        <h3>기업의 업무 전환을 설계합니다.</h3>
+        <p>현재 상태와 실제 업무를 진단하고 우선과제를 설계합니다. 진단·교육에서 시작해 필요하면 Micro-PoC와 OMAZU FDE Co-Build까지 단계적으로 확장합니다.</p>
+        <a class="tlink" href="consulting.html">Consulting 보기</a>
+      </div>
+      <div>
+        <span class="mono">Academy</span>
+        <h3>AI를 실제 일에 적용합니다.</h3>
+        <p>사전진단과 2DAYS Sprint를 통해 실제 업무와 아이디어를 결과물로 만들고, 반복해서 활용할 수 있는 AI Workflow로 연결합니다.</p>
+        <a class="tlink" href="academy.html">Academy 보기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="approach">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono eyebrow">OMAZU Approach</span>
+      <h2>모든 AX 설계는 지금 무엇이 가능한지<br>확인하는 것에서 시작합니다.</h2>
+      <p class="body">OMAZU는 Diagnostic과 Framework를 별도로 사용하지 않습니다. 사람·업무·실행기반·Trust의 현재 상태를 진단하고, 우선과제를 설계한 뒤 실제 업무에서 검증해 다음 투자판단까지 연결하는 하나의 실행체계입니다.</p>
+    </div>
+
+    <div class="lenses">
+      <div class="lens"><span class="mono">Lens 01</span><b>AI 활용역량</b><span>사람이 AI를 실제 업무에 활용할 준비가 되어 있는가</span></div>
+      <div class="lens"><span class="mono">Lens 02</span><b>업무 프로세스</b><span>어떤 업무를 바꿀 가치가 있는가</span></div>
+      <div class="lens"><span class="mono">Lens 03</span><b>AX Execution Foundation</b><span>데이터·문서·시스템 등 실제 실행기반이 준비되어 있는가</span></div>
+      <div class="lens"><span class="mono">Lens 04</span><b>Enterprise Trust</b><span>데이터·권한·행동과 운영 위험을 통제할 수 있는가</span></div>
+    </div>
+    <div class="converge">
+      <span class="conv-tick" style="left:12.5%"></span>
+      <span class="conv-tick" style="left:37.5%"></span>
+      <span class="conv-tick" style="left:62.5%"></span>
+      <span class="conv-tick" style="left:87.5%"></span>
+    </div>
+
+    <div class="rail">
+      <div class="stages">
+        <div class="stage">
+          <span class="mono">01 — Diagnose</span>
+          <h4>진단</h4>
+          <p>네 관점의 준비도를 함께 확인해 지금 무엇이 가능한지 판단합니다.</p>
+        </div>
+        <div class="stage">
+          <span class="mono">02 — Design</span>
+          <h4>설계</h4>
+          <p>우선과제를 정하고 AI와 사람의 역할, 권한과 승인을 설계합니다.</p>
+        </div>
+        <div class="stage">
+          <span class="mono">03 — Validate</span>
+          <h4>검증</h4>
+          <p>작은 범위에서 성과와 위험을 확인하고 다음 투자단계를 판단합니다.</p>
+        </div>
+      </div>
+      <div class="gate">
+        <span class="mono">Decision</span>
+        <b>Go</b><em>/</em><b>Conditional Go</b><em>/</em><b>No-Go</b>
+      </div>
+    </div>
+
+    <div class="asset-line">
+      <span class="mono">AX Assets · 5 Domains</span>
+      <div class="asset-names">
+        <span>Knowledge</span><span>Data</span><span>Workflow</span><span>Application</span><span>Expertise</span>
+      </div>
+    </div>
+
+    <div class="output-chain">
+      <span class="mono">What remains</span>
+      <div class="output-flow">
+        <span>Readiness Gap</span><em>→</em>
+        <span>Priority AX Initiative</span><em>→</em>
+        <span>To-Be Workflow</span><em>→</em>
+        <span>Micro-PoC</span><em>→</em>
+        <span>Business Value Decision</span>
+      </div>
+    </div>
+
+    <div style="margin-top:44px; display:flex; flex-wrap:wrap; gap:26px;">
+      <a class="tlink" href="consulting.html#diagnostic">AX 진단 알아보기</a>
+      <a class="tlink" href="consulting.html#framework">OMAZU AX Framework 알아보기</a>
+    </div>
+  </div>
+</section>
+
+
+<section id="why-omazu">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono eyebrow">Why OMAZU</span>
+      <h2>방법론은 있어야 하지만,<br>방법론에서 끝나서는 안 됩니다.</h2>
+      <p class="body">OMAZU의 핵심 자산은 특정 소프트웨어 플랫폼 자체가 아니라 AX Framework + Diagnostic + 현장 실행방법론입니다. 무엇을 바꿀지 먼저 정하고, 실제 업무에서 검증해 다음 실행까지 연결합니다.</p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-item">
+        <span class="mono">01 · Framework + Diagnostic</span>
+        <h3>진단과 실행방법론이 하나로 연결됩니다.</h3>
+        <p>사람·업무·실행기반·Trust를 진단하고, 그 결과를 우선과제의 설계와 실행 검증으로 이어갑니다.</p>
+      </div>
+      <div class="why-item">
+        <span class="mono">02 · From Work to PoC</span>
+        <h3>솔루션보다 실제 업무에서 시작합니다.</h3>
+        <p>업무문제를 구조화해 Priority AX Initiative를 정하고, 작은 범위의 Micro-PoC로 실제 가능성을 확인합니다.</p>
+      </div>
+      <div class="why-item">
+        <span class="mono">03 · Trust + Business Value</span>
+        <h3>작동 여부와 투자 가치를 함께 봅니다.</h3>
+        <p>데이터·권한·행동 위험을 설계 단계부터 확인하고, 성과·위험·비용과 선결조건을 함께 검토합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="reference">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono eyebrow">Reference-based Methodology</span>
+      <h2>하나의 모델을 가져다 쓴 것이 아니라,<br>목적에 따라 기준을 나눠 교차 검증했습니다.</h2>
+      <p class="body">OMAZU Framework와 Diagnostic은 국내 적용기준, Assessment 방법론, Enterprise AI Benchmark, 국제표준과 업무·역량 Framework를 목적별로 참조해 설계합니다.</p>
+    </div>
+
+    <div class="reference-band">
+      <div class="ref-row">
+        <b>Domestic Context</b>
+        <p>국내 AI·개인정보·공공 적용기준을 참조해 실제 조직 환경에서의 적용성과 준수조건을 확인합니다.</p>
+      </div>
+      <div class="ref-row">
+        <b>International Standards</b>
+        <p>ISO/IEC 42001·23894 등 AI Management·Risk 관련 표준과 NIST AI RMF를 기준으로 설계 정합성을 교차 검증합니다.</p>
+      </div>
+      <div class="ref-row">
+        <b>Enterprise Benchmarks</b>
+        <p>Microsoft · AWS · Google Cloud · Gartner 등 공개 Enterprise AI maturity·adoption 관점을 Coverage 검증에 참고합니다.</p>
+      </div>
+      <div class="ref-row">
+        <b>Work & Capability</b>
+        <p>DigComp 계열 역량 Framework와 BPMN·DMN 등 업무·의사결정 표준을 진단과 Workflow 설계 논리의 참고기준으로 활용합니다.</p>
+      </div>
+    </div>
+
+    <p class="ref-note">※ 위 기관·기업·표준은 OMAZU의 파트너·인증·공식 채택사를 의미하지 않으며, 방법론 설계를 위한 Reference 및 교차 검증 기준입니다.</p>
+  </div>
+</section>
+
+<!--
+  PARTNERSHIP 섹션 (Fasoo × OMAZU) — Revision v2.1B No.36 / No.37
+  현재 비노출. 아래 세 가지가 모두 확인된 뒤에만 이 블록을 해제한다.
+    1) MOU 최종 체결 완료 및 체결일 확인
+    2) 파수(Fasoo) 측 사명·로고·표현 사용범위 서면 승인
+    3) 고동현 상무 사전 협의 완료
+  해제 시 삽입 위치: FINAL CTA 직전.
+
+  <section id="partnership">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="mono eyebrow">Partnership</span>
+        <h2>기업 AX에 필요한 데이터와 보안 기술까지<br>함께 검토합니다.</h2>
+        <p class="body">OMAZU는 고객의 업무와 AX 실행조건을 진단하고, 업무 재설계와 PoC 기획을 담당합니다.
+        필요한 경우 파수(Fasoo)를 포함한 Enterprise AI·Data·Trust 기술 파트너와 적용 가능성 및 기술검증 범위를 협의합니다.</p>
+      </div>
+      <a class="tlink" href="#contact">파트너십 문의</a>
+    </div>
+  </section>
+-->
+
+<section class="final" id="contact">
+  <div class="wrap">
+    <span class="mono eyebrow">Contact</span>
+    <h2>AI를 어디에, 어떻게 적용할지부터 함께 확인합니다.</h2>
+    <p>기업의 AX부터 개인의 AI 활용까지, 현재 상황과 실제 과제에서 시작합니다.</p>
+    <div class="row-cta">
+      <a class="btn-p" href="#contact-form">상담 신청</a>
+      <a class="btn-s" href="academy.html">Academy 보기</a>
+    </div>
+  </div>
+</section>
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr-top">
+      <div class="ftr-brand">
+        <b>OMAZU AICA</b>
+        <p>Original Minds, Amplified by AI — From Zero to Unlimited.<br>사람의 생각을 AI로, 제로에서 무한으로.</p>
+      </div>
+      <div class="ftr-col">
+        <span class="mono">Services</span>
+        <a href="consulting.html">Consulting</a>
+        <a href="academy.html">Academy</a>
+        <a href="consulting.html#framework">OMAZU AX Framework</a>
+        <a href="consulting.html#diagnostic">AX Diagnostic</a>
+      </div>
+      <div class="ftr-col">
+        <span class="mono">Company</span>
+        <a href="#about">회사 소개</a>
+        <a href="#contact">상담 신청</a>
+        <a href="#privacy">개인정보처리방침</a>
+        <a href="#terms">이용약관</a>
+      </div>
+    </div>
+    <!-- Partnership 링크는 파수(Fasoo) 승인 확인 후 Company 열에 추가한다. Revision v2.1B No.37 -->
+    <div class="ftr-btm">
+      <span>© 2026 OMAZU AI Consulting &amp; Academy. All rights reserved.</span>
+      <span>aica@omazu.ai &nbsp;·&nbsp; aica.omazu.ai</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

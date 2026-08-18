@@ -15,7 +15,7 @@ import {
   AX_ASSETS, 
   FRAMEWORK_3LAYERS, 
   CORE_CONCEPTS, 
-  DIAGNOSTIC_DOMAINS 
+  DIAGNOTIC_DOMAINS 
 } from '../data/content';
 
 interface ConsultingViewProps {
@@ -161,11 +161,11 @@ export const ConsultingView: React.FC<ConsultingViewProps> = ({ openInquiryModal
         </div>
       </section>
 
-      {/* 05. OMAZU AX DIAGNOSTIC */}
+      {/* 05. OMAZU AX DIAGNOTIC */}
       <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-2">
-            OMAZU AX DIAGNOSTIC (4대 영역 &amp; 정밀도)
+            OMAZU AX DIAGNOTIC (4대 영역 &amp; 정밀도)
           </h2>
           <p className="text-xs sm:text-sm text-slate-400">
             AI 활용역량 진단은 7개 하위역량, 총 28문항 및 Practitioner / Executive 2종 결과지로 구성됩니다.
@@ -173,7 +173,7 @@ export const ConsultingView: React.FC<ConsultingViewProps> = ({ openInquiryModal
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
-          {DIAGNOSTIC_DOMAINS.map((d, idx) => (
+          {DIAGNOTIC_DOMAINS.map((d, idx) => (
             <div key={idx} className="glass-card p-6 rounded-2xl border border-slate-800 space-y-2">
               <div className="font-bold text-cyan-400 text-sm">0{idx + 1}. {d.domain}</div>
               <p className="text-slate-300">{d.desc}</p>

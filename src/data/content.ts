@@ -6,19 +6,19 @@ export const BRAND = {
   email: "aica@omazu.ai",
   sloganPrimary: "AI로 현장의 문제를 함께 풉니다.",
   sloganSecondary: "Original Minds, Amplified by AI.",
-  description: "OMAZU는 자체 AX Framework와 Diagnostics를 기반으로 기업의 업무 전환을 설계·검증하고, Academy에서는 실제 과제를 AI Workflow와 결과물로 연결합니다.",
+  description: "OMAZU는 자체 AX Framework와 Diagnotics를 기반으로 기업의 업무 전환을 설계·검증하고, Academy에서는 실제 과제를 AI Workflow와 결과물로 연결합니다.",
   fasooNotice: "OMAZU는 고객의 업무와 AX 실행조건을 진단하고 업무 재설계·PoC 기획·구축 PM을 수행합니다. Fasoo와의 MOU를 기반으로 필요한 경우 Enterprise AI·Data·Trust 기술의 적용 가능성과 기술검증 범위를 함께 검토합니다. 프로젝트의 기술 구성은 고객 환경과 과제 특성에 따라 다른 LLM·Agent Tool·기존 시스템·Custom Development와 조합할 수 있습니다."
 };
 
 export const HOME_HERO = {
   headline: "기업의 AX를 설계하고, 사람의 일하는 방식을 바꿉니다.",
   subcopy: "AI로 현장의 문제를 함께 풉니다.",
-  body: "OMAZU는 자체 AX Framework와 Diagnostics를 기반으로 기업의 업무 전환을 설계·검증하고, Academy에서는 실제 과제를 AI Workflow와 결과물로 연결합니다."
+  body: "OMAZU는 자체 AX Framework와 Diagnotics를 기반으로 기업의 업무 전환을 설계·검증하고, Academy에서는 실제 과제를 AI Workflow와 결과물로 연결합니다."
 };
 
 export const WHY_OMAZU_POINTS = [
   {
-    title: "01. Framework + Diagnostics",
+    title: "01. Framework + Diagnotics",
     desc: "단순 도구 교육이나 기술 시연이 아닙니다. 검증된 AX 자산 5영역과 4대 진단 체계로 조직의 현상태를 정밀 분석하고 출발합니다."
   },
   {
@@ -66,7 +66,7 @@ export const CORE_CONCEPTS = [
   { name: "Business Value Validation", desc: "As-Is 기준선 대비 실제 개선효과(시간, 품질, 위험, 비용)를 측정하여 투자 여부를 결정합니다." }
 ];
 
-export const DIAGNOSTIC_DOMAINS = [
+export const DIAGNOTIC_DOMAINS = [
   { domain: "AI 활용역량", desc: "구성원이 AI를 이해하고 업무를 분해·활용·검증·안전하게 사용할 수 있는가", result: "7개 하위역량, 28문항, Practitioner/Executive 2종 결과지" },
   { domain: "업무 프로세스", desc: "어떤 업무에 병목·반복·오류·판단 부담이 있고 AI로 개선할 가치가 있는가", result: "Priority AX Initiative 도출" },
   { domain: "AX Execution Foundation", desc: "문서·데이터·시스템·연계·운영조건으로 실제 PoC와 구축이 가능한가", result: "실행 Gap 및 선결조건 도출" },
@@ -76,7 +76,7 @@ export const DIAGNOSTIC_DOMAINS = [
 export const CONSULTING_SCOPES = [
   {
     step: "01",
-    title: "Diagnostics & Education Consulting",
+    title: "Diagnotics & Education Consulting",
     desc: "4대 진단과 실제 업무분석을 바탕으로 AX 교육·워크숍, 우선과제 발굴과 실행계획까지 설계합니다."
   },
   {
