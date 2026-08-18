@@ -100,12 +100,12 @@ export const MyPageModal: React.FC<MyPageModalProps> = ({
           
           {activeTab === 'profile' && (
             <div className="space-y-6">
-              {/* Diagnotic Status Box */}
+              {/* Diagnotics Status Box */}
               <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 flex items-center justify-between">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
                     <ShieldCheck className="w-4 h-4 text-cyan-400" />
-                    <span className="text-xs font-bold text-white">AX Ready Diagnotic 실행준비도</span>
+                    <span className="text-xs font-bold text-white">AX Ready Diagnotics 실행준비도</span>
                   </div>
                   <div className="text-xl font-extrabold text-cyan-400">
                     {user.diagnosticScore ? `${user.diagnosticScore}점 / 100점` : '미진단 상태'}

@@ -161,11 +161,11 @@ export const ConsultingView: React.FC<ConsultingViewProps> = ({ openInquiryModal
         </div>
       </section>
 
-      {/* 05. OMAZU AX DIAGNOTIC */}
+      {/* 05. OMAZU AX DIAGNOTICS */}
       <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-2">
-            OMAZU AX DIAGNOTIC (4대 영역 &amp; 정밀도)
+            OMAZU AX DIAGNOTICS (4대 영역 &amp; 정밀도)
           </h2>
           <p className="text-xs sm:text-sm text-slate-400">
             AI 활용역량 진단은 7개 하위역량, 총 28문항 및 Practitioner / Executive 2종 결과지로 구성됩니다.
