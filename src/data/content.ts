@@ -11,7 +11,7 @@ export const BRAND = {
 };
 
 export const HOME_HERO = {
-  headline: "기업의 AX를 설계하고, 사람의 일하는 방식을 바꿉니다.",
+  headline: "기업에는 안전하고 검증 가능한 AX 실행을, 개인에게는 내일 바로 쓰는 AI 실무와 창작 역량을.",
   subcopy: "AI로 현장의 문제를 함께 풉니다.",
   body: "OMAZU AICA의 AX Framework와 Diagnotics를 기반으로 현재 수준과 실제 과제를 먼저 확인합니다. 기업은 업무·역량·데이터·시스템·Trust 조건을 진단하고, AI가 일할 구조를 설계한 뒤 교육이 결합된 Micro-PoC와 Business Value Validation으로 도입·확산 여부를 검증합니다. 개인은 사전진단과 2DAYS Sprint를 통해 실제 업무 또는 창작 결과물과 재사용 가능한 Workflow·Template까지 완성합니다."
 };
