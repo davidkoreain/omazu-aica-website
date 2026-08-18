@@ -1,103 +1,54 @@
 import React, { useState } from 'react';
-import { AuthProvider } from './context/AuthContext';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
-import { LandingView } from './views/LandingView';
+import { HomeView } from './views/HomeView';
 import { ConsultingView } from './views/ConsultingView';
 import { AcademyView } from './views/AcademyView';
-import { DiagnosticModal } from './components/DiagnosticModal';
+import { PrivacyView } from './views/PrivacyView';
+import { TermsView } from './views/TermsView';
 import { InquiryModal } from './components/InquiryModal';
-import { AuthModal } from './components/AuthModal';
-import { MyPageModal } from './components/MyPageModal';
 
 function MainApp() {
-  const [activeTab, setActiveTab] = useState<'landing' | 'consulting' | 'academy'>('landing');
-  const [isDiagnosticOpen, setIsDiagnosticOpen] = useState(false);
   const [isInquiryOpen, setIsInquiryOpen] = useState(false);
-  const [isAuthOpen, setIsAuthOpen] = useState(false);
-  const [authMode, setAuthMode] = useState<'login' | 'signup'>('login');
-  const [isMyPageOpen, setIsMyPageOpen] = useState(false);
 
-  const openAuthModal = (mode: 'login' | 'signup' = 'login') => {
-    setAuthMode(mode);
-    setIsAuthOpen(true);
+  const openInquiryModal = () => {
+    setIsInquiryOpen(true);
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#0A0D14] text-slate-100 selection:bg-cyan-500 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-[#0A0D14] text-slate-100 selection:bg-cyan-500 selection:text-white font-sans">
       {/* Navigation Header */}
-      <Navbar
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        openDiagnosticModal={() => setIsDiagnosticOpen(true)}
-        openInquiryModal={() => setIsInquiryOpen(true)}
-        openAuthModal={openAuthModal}
-        openMyPageModal={() => setIsMyPageOpen(true)}
-      />
+      <Navbar openInquiryModal={openInquiryModal} />
 
-      {/* Main Content Area */}
+      {/* Main Page View Routes (v2.1 GNB: HOME / CONSULTING / ACADEMY) */}
       <main className="flex-grow">
-        {activeTab === 'landing' && (
-          <LandingView
-            setActiveTab={setActiveTab}
-            openDiagnosticModal={() => setIsDiagnosticOpen(true)}
-            openInquiryModal={() => setIsInquiryOpen(true)}
-          />
-        )}
-
-        {activeTab === 'consulting' && (
-          <ConsultingView
-            openDiagnosticModal={() => setIsDiagnosticOpen(true)}
-            openInquiryModal={() => setIsInquiryOpen(true)}
-          />
-        )}
-
-        {activeTab === 'academy' && (
-          <AcademyView
-            openDiagnosticModal={() => setIsDiagnosticOpen(true)}
-            openInquiryModal={() => setIsInquiryOpen(true)}
-          />
-        )}
+        <Routes>
+          <Route path="/" element={<HomeView openInquiryModal={openInquiryModal} />} />
+          <Route path="/consulting" element={<ConsultingView openInquiryModal={openInquiryModal} />} />
+          <Route path="/academy" element={<AcademyView openInquiryModal={openInquiryModal} />} />
+          <Route path="/privacy" element={<PrivacyView />} />
+          <Route path="/terms" element={<TermsView />} />
+        </Routes>
       </main>
 
-      {/* Global Modals */}
-      <DiagnosticModal
-        isOpen={isDiagnosticOpen}
-        onClose={() => setIsDiagnosticOpen(false)}
-        openInquiryModal={() => setIsInquiryOpen(true)}
-      />
-
+      {/* Global Inquiry Modal */}
       <InquiryModal
         isOpen={isInquiryOpen}
         onClose={() => setIsInquiryOpen(false)}
       />
 
-      <AuthModal
-        isOpen={isAuthOpen}
-        onClose={() => setIsAuthOpen(false)}
-        initialMode={authMode}
-      />
-
-      <MyPageModal
-        isOpen={isMyPageOpen}
-        onClose={() => setIsMyPageOpen(false)}
-        openDiagnosticModal={() => setIsDiagnosticOpen(true)}
-      />
-
       {/* Footer */}
-      <Footer
-        setActiveTab={setActiveTab}
-        openInquiryModal={() => setIsInquiryOpen(true)}
-      />
+      <Footer openInquiryModal={openInquiryModal} />
     </div>
   );
 }
 
 export function App() {
   return (
-    <AuthProvider>
+    <BrowserRouter>
       <MainApp />
-    </AuthProvider>
+    </BrowserRouter>
   );
 }
 

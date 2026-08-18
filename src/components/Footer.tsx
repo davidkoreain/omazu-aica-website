@@ -1,13 +1,13 @@
 import React from 'react';
-import { Sparkles, Shield, Mail, ExternalLink } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Sparkles, Shield, Mail } from 'lucide-react';
 import { BRAND } from '../data/content';
 
 interface FooterProps {
-  setActiveTab: (tab: 'landing' | 'consulting' | 'academy') => void;
   openInquiryModal: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ setActiveTab, openInquiryModal }) => {
+export const Footer: React.FC<FooterProps> = ({ openInquiryModal }) => {
   return (
     <footer className="bg-slate-950 border-t border-slate-800 text-slate-400 py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
@@ -22,77 +22,69 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, openInquiryModal }
               OMAZU <span className="text-cyan-400">AICA</span>
             </span>
           </div>
-          <p className="text-sm font-semibold text-slate-200">
-            {BRAND.slogan}
+          <p className="text-sm font-bold text-slate-200">
+            {BRAND.sloganPrimary}
           </p>
-          <p className="text-xs text-slate-400 leading-relaxed">
-            {BRAND.sloganKo}
+          <p className="text-xs text-cyan-300 font-semibold">
+            {BRAND.sloganSecondary}
           </p>
-          <div className="pt-2 flex items-center gap-2 text-xs text-cyan-400 bg-cyan-950/40 p-2.5 rounded-lg border border-cyan-800/40 max-w-md">
-            <Shield className="w-4 h-4 shrink-0 text-cyan-400" />
-            <span>{BRAND.fasooMou}</span>
+          <p className="text-xs text-slate-400 leading-relaxed max-w-lg">
+            {BRAND.description}
+          </p>
+
+          <div className="pt-2 flex items-center gap-2 text-xs text-slate-300">
+            <Mail className="w-4 h-4 text-cyan-400 shrink-0" />
+            <span>대표 이메일: <strong className="text-white font-mono">{BRAND.email}</strong></span>
           </div>
         </div>
 
         {/* Quick Links */}
         <div>
-          <h4 className="text-sm font-semibold text-slate-200 uppercase tracking-wider mb-4">
+          <h4 className="text-xs font-bold text-slate-200 uppercase tracking-wider mb-4">
             Navigation
           </h4>
-          <ul className="space-y-2.5 text-sm">
+          <ul className="space-y-2.5 text-xs font-medium">
             <li>
-              <button 
-                onClick={() => setActiveTab('landing')}
-                className="hover:text-cyan-400 transition-colors"
-              >
-                01. LANDING PAGE
-              </button>
+              <Link to="/" className="hover:text-cyan-400 transition-colors">
+                HOME
+              </Link>
             </li>
             <li>
-              <button 
-                onClick={() => setActiveTab('consulting')}
-                className="hover:text-cyan-400 transition-colors flex items-center gap-1"
-              >
-                02. CONSULTING (B2B AX)
-              </button>
+              <Link to="/consulting" className="hover:text-cyan-400 transition-colors">
+                CONSULTING
+              </Link>
             </li>
             <li>
-              <button 
-                onClick={() => setActiveTab('academy')}
-                className="hover:text-cyan-400 transition-colors"
-              >
-                03. ACADEMY (퇴근 후 AI)
-              </button>
+              <Link to="/academy" className="hover:text-cyan-400 transition-colors">
+                ACADEMY
+              </Link>
             </li>
           </ul>
         </div>
 
-        {/* Inquiry & Legal */}
+        {/* Action */}
         <div>
-          <h4 className="text-sm font-semibold text-slate-200 uppercase tracking-wider mb-4">
-            Contact & Partnership
+          <h4 className="text-xs font-bold text-slate-200 uppercase tracking-wider mb-4">
+            Contact &amp; Partnership
           </h4>
           <p className="text-xs text-slate-400 mb-3">
-            AX 진단 및 기업 맞춤형 PoC/교육, Fasoo 솔루션 연계 문의
+            AX 진단, Decision Sprint, Micro-PoC 및 Fasoo 파트너십 문의
           </p>
           <button
             onClick={openInquiryModal}
-            className="w-full text-xs bg-slate-800 hover:bg-slate-700 text-slate-100 py-2.5 px-4 rounded-lg border border-slate-700 transition-colors flex items-center justify-center gap-2 font-medium"
+            className="w-full text-xs bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
           >
-            <Mail className="w-3.5 h-3.5 text-cyan-400" />
-            기업 AX 상담 신청
+            <Mail className="w-4 h-4 text-white" />
+            상담 신청하기
           </button>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto mt-12 pt-6 border-t border-slate-900 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 gap-4">
-        <p>© 2026 {BRAND.name}. All rights reserved.</p>
-        <div className="flex gap-6">
-          <span className="hover:text-slate-400 cursor-pointer">개인정보 처리방침</span>
-          <span className="hover:text-slate-400 cursor-pointer">이용약관</span>
-          <span className="hover:text-slate-400 cursor-pointer flex items-center gap-1">
-            Fasoo Partnership <ExternalLink className="w-3 h-3" />
-          </span>
+        <p>© 2026 {BRAND.name} ({BRAND.koreanName}). All rights reserved. Official Domain: <span className="font-mono text-cyan-400">{BRAND.domain}</span></p>
+        <div className="flex gap-6 text-[11px]">
+          <Link to="/privacy" className="hover:text-slate-200 transition-colors">개인정보처리방침</Link>
+          <Link to="/terms" className="hover:text-slate-200 transition-colors">이용약관</Link>
         </div>
       </div>
     </footer>

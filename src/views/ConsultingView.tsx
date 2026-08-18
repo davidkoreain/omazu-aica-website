@@ -1,65 +1,62 @@
 import React from 'react';
 import { 
-  Building2, 
+  TrendingUp, 
   AlertTriangle, 
   ArrowRight, 
   CheckCircle2, 
-  TrendingUp, 
-  Lock
+  Lock,
+  Layers,
+  ShieldCheck,
+  Cpu
 } from 'lucide-react';
 import { 
-  FAILURE_POINTS, 
-  DIAGNOSTIC_DOMAINS, 
+  BRAND,
+  CONSULTING_SCOPES, 
   AX_ASSETS, 
-  CONSULTING_STEPS 
+  FRAMEWORK_3LAYERS, 
+  CORE_CONCEPTS, 
+  DIAGNOSTIC_DOMAINS 
 } from '../data/content';
 
 interface ConsultingViewProps {
-  openDiagnosticModal: () => void;
   openInquiryModal: () => void;
 }
 
-export const ConsultingView: React.FC<ConsultingViewProps> = ({
-  openDiagnosticModal,
-  openInquiryModal,
-}) => {
+export const ConsultingView: React.FC<ConsultingViewProps> = ({ openInquiryModal }) => {
+  const failurePoints = [
+    { title: "한 번의 IT 이벤트로 다룬다", desc: "프로세스 변화가 아니라 일회성 프로젝트로 접근하면 기존 결재·의사결정 흐름과 부딪칩니다." },
+    { title: "목적과 지표가 없다", desc: "풀어야 할 업무 문제와 목표 지표를 정하지 않으면 시연에 그치고 효과가 측정되지 않습니다." },
+    { title: "데이터가 준비되지 않았다", desc: "중복되고 정제되지 않은 문서가 오답과 환각을 만듭니다." },
+    { title: "현업 맥락이 빠졌다", desc: "현장이 실제로 어떻게 일하는지 제외한 채 추진하면 방치됩니다." },
+    { title: "보안과 비용을 통제하지 못한다", desc: "지식자산 유출 위험 및 운영비가 통제되지 않아 투자 성과를 증명하지 못합니다." }
+  ];
+
   return (
-    <div className="space-y-24 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* HERO WITH VISUAL IMAGE */}
-      <section className="pt-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div className="space-y-24 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+      {/* 01. HERO */}
+      <section className="pt-4 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-7 space-y-6 text-left">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-950/80 border border-blue-700/60 text-cyan-300 text-xs font-semibold">
-            <Building2 className="w-4 h-4 text-cyan-400" />
-            <span>OMAZU AX Framework &amp; Diagnostic 기반</span>
+            <TrendingUp className="w-4 h-4 text-cyan-400" />
+            <span>OMAZU AX Consulting</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
             AI 도입이 아니라, 우리 조직의<br />
-            <span className="gradient-text">업무 전환과 투자판단</span>을 설계합니다.
+            <span className="gradient-text">업무 전환과 투자 판단</span>을 설계합니다.
           </h1>
 
-          <p className="text-base sm:text-lg text-cyan-300 font-semibold">
-            진단 → 설계 → Micro-PoC → 성과·Trust 검증 → Go / Conditional Go / No-Go
-          </p>
-
           <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            OMAZU AX Framework는 조직이 이미 가진 지식·데이터·업무흐름·업무시스템·전문성에서 출발합니다. 사람과 업무, 실행기반, Trust 조건을 분리해 진단하고, 최종 판단 기준은 “기술적으로 되는가”가 아니라 “실제로 성과가 나고, 안전하게 운영할 수 있으며, 투자할 가치가 있는가”입니다.
+            OMAZU는 특정 플랫폼을 전제로 역산하지 않습니다. Enterprise AI·Data·Trust 기술, 외부 LLM·Agent Tool, 고객의 기존 시스템과 필요 시 Custom Development를 과제에 맞게 기술중립적으로 조합합니다.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 pt-2">
+          <div className="pt-2">
             <button
               onClick={openInquiryModal}
-              className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold text-sm shadow-xl shadow-blue-600/30 transition-all flex items-center justify-center gap-2"
+              className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold text-xs sm:text-sm shadow-xl shadow-blue-600/30 transition-all flex items-center gap-2"
             >
-              우리 조직 AX 진단·상담
+              Consulting 상담 신청
               <ArrowRight className="w-4 h-4" />
-            </button>
-            <button
-              onClick={openInquiryModal}
-              className="px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-cyan-300 font-bold text-sm transition-all flex items-center justify-center gap-2"
-            >
-              <Lock className="w-4 h-4" />
-              Fasoo 연계 상담
             </button>
           </div>
         </div>
@@ -68,96 +65,62 @@ export const ConsultingView: React.FC<ConsultingViewProps> = ({
           <div className="rounded-3xl overflow-hidden border border-blue-500/30 shadow-2xl shadow-blue-500/10">
             <img 
               src="/images/b2b_ax_consulting.jpg" 
-              alt="B2B Enterprise AX Consulting Session" 
+              alt="OMAZU AX Consulting Session" 
               className="w-full h-auto object-cover"
             />
           </div>
         </div>
       </section>
 
-      {/* WHY DIAGNOSIS FIRST (FAILURE POINTS) */}
-      <section className="bg-slate-900 border border-slate-800 rounded-3xl p-8 lg:p-12">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-rose-950 text-rose-400 text-xs font-mono font-bold mb-3 border border-rose-800/40">
+      {/* 02. WHY DIAGNOSIS FIRST */}
+      <section className="bg-slate-900 border border-slate-800 rounded-3xl p-8 lg:p-12 space-y-8">
+        <div className="text-center max-w-3xl mx-auto space-y-2">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-rose-950 text-rose-400 text-xs font-mono font-bold border border-rose-800/40">
             <AlertTriangle className="w-4 h-4" />
             WHY DIAGNOSIS FIRST
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
             AI 도입이 실패하는 이유는 기술이 아닙니다.
           </h2>
           <p className="text-xs sm:text-sm text-slate-300">
-            풀 문제를 정의하지 않았고, 데이터가 준비되지 않았고, 권한과 비용을 통제하지 못했기 때문입니다.
+            문제·데이터·현업맥락·Trust·성과 기준이 선행되어야 합니다.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          {FAILURE_POINTS.map((item, idx) => (
-            <div key={idx} className="bg-slate-950 p-6 rounded-2xl border border-slate-800/80">
-              <div className="text-xs font-mono text-rose-400 font-bold mb-2 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-rose-500" />
-                실패 지점 0{idx + 1}
-              </div>
-              <h3 className="text-base font-bold text-white mb-2">
-                {item.title}
-              </h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                {item.desc}
-              </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 text-xs">
+          {failurePoints.map((fp, idx) => (
+            <div key={idx} className="bg-slate-950 p-5 rounded-2xl border border-slate-800/80 space-y-2">
+              <div className="text-xs font-mono text-rose-400 font-bold">실패지점 0{idx + 1}</div>
+              <h3 className="font-bold text-white text-sm">{fp.title}</h3>
+              <p className="text-slate-400 text-[11px] leading-relaxed">{fp.desc}</p>
             </div>
           ))}
-
-          {/* OMAZU Solution Box */}
-          <div className="bg-gradient-to-br from-blue-950 to-cyan-950 p-6 rounded-2xl border border-cyan-800/60 flex flex-col justify-between">
-            <div>
-              <div className="text-xs font-mono text-cyan-300 font-bold mb-2 flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-cyan-400" />
-                OMAZU의 대응 방식
-              </div>
-              <h3 className="text-base font-bold text-white mb-2">
-                진단 ➔ 현업 구조화 ➔ Micro-PoC ➔ Trust &amp; 성과 연결
-              </h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                진단으로 우선과제를 정하고, 현업이 직접 자기 업무를 구조화하여 작게 만든 뒤 데이터·보안·비용을 확인하고 투자 확산 근거로 연결합니다.
-              </p>
-            </div>
-            <button
-              onClick={openDiagnosticModal}
-              className="mt-4 w-full py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs rounded-lg transition-colors"
-            >
-              실행준비도 진단 알아보기
-            </button>
-          </div>
         </div>
       </section>
 
-      {/* 4 AX READINESS DOMAINS */}
-      <section>
+      {/* 03. ENGAGEMENT SCOPE (3단계 확장 범위) */}
+      <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">
-            1. AX 실행준비도 (진단영역)
+            ENGAGEMENT SCOPE (3단계 프로젝트 범위)
           </h2>
-          <p className="text-xs sm:text-sm text-slate-300">
-            사람·업무·기반·Trust를 따로 보고 함께 판단합니다.
+          <p className="text-xs sm:text-sm text-slate-400">
+            고객의 준비도와 과제 범위에 따라 진단·교육 단계에서 시작해 FDE Co-Build까지 단계적으로 확장할 수 있습니다.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {DIAGNOSTIC_DOMAINS.map((item, idx) => (
-            <div key={idx} className="glass-card p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
-              <div>
-                <div className="flex justify-between items-center mb-3">
-                  <span className="text-xs font-bold font-mono px-2.5 py-1 bg-blue-950 text-cyan-300 rounded border border-blue-800">
-                    진단영역 0{idx + 1}
-                  </span>
-                  <span className="text-xs text-slate-300 font-mono">
-                    결과: {item.result}
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">
-                  {item.domain}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {CONSULTING_SCOPES.map((scope) => (
+            <div key={scope.step} className="glass-card p-8 rounded-3xl border border-slate-800 flex flex-col justify-between space-y-6">
+              <div className="space-y-3">
+                <span className="text-xs font-mono font-bold text-cyan-400 px-3 py-1 bg-cyan-950 rounded-full border border-cyan-800">
+                  SCOPE {scope.step}
+                </span>
+                <h3 className="text-lg font-bold text-white mt-2">
+                  {scope.title}
                 </h3>
-                <p className="text-xs text-slate-300 leading-relaxed mb-4">
-                  핵심 질문: "{item.question}"
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  {scope.desc}
                 </p>
               </div>
             </div>
@@ -165,123 +128,101 @@ export const ConsultingView: React.FC<ConsultingViewProps> = ({
         </div>
       </section>
 
-      {/* 5 AX ASSETS */}
-      <section className="bg-slate-900 border border-slate-800 rounded-3xl p-8 lg:p-12">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">
-            2. 기업이 이미 가진 AX 자산 5영역에서 시작합니다
+      {/* 04. OMAZU AX FRAMEWORK */}
+      <section className="bg-slate-900 border border-slate-800 rounded-3xl p-8 lg:p-12 space-y-10">
+        <div className="text-center max-w-2xl mx-auto space-y-2">
+          <span className="text-xs font-mono font-bold px-3 py-1 bg-blue-950 text-cyan-300 rounded border border-blue-800">
+            OMAZU AX FRAMEWORK
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+            AX 자산 5영역 &amp; 3-Layer 실행구조
           </h2>
-          <p className="text-xs sm:text-sm text-slate-300">
-            "무엇을 AI에 맡길 것인가 ➔ 무엇을 근거로 일하게 할 것인가 ➔ 어떤 시스템과 연결할 것인가 ➔ 사람은 어디에서 판단·승인할 것인가 ➔ 무엇으로 성과를 검증할 것인가"를 연결합니다.
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        {/* 5 Asset Names */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 text-xs">
           {AX_ASSETS.map((asset, idx) => (
-            <div key={idx} className="bg-slate-950 p-5 rounded-2xl border border-slate-800 flex flex-col justify-between">
-              <div>
-                <div className="text-xs font-bold text-cyan-400 mb-2">
-                  0{idx + 1}. {asset.name.split(' ')[0]}
-                </div>
-                <div className="text-sm font-bold text-white mb-1">
-                  {asset.name}
-                </div>
-                <div className="text-xs text-slate-300 mb-3">
-                  {asset.desc}
-                </div>
-              </div>
-              <div className="pt-3 border-t border-slate-800 text-xs text-slate-300">
-                역할: {asset.role}
-              </div>
+            <div key={idx} className="bg-slate-950 p-5 rounded-2xl border border-slate-800">
+              <div className="font-mono text-cyan-400 font-bold mb-1">0{idx + 1}. {asset.name}</div>
+              <div className="text-white font-bold text-sm mb-1">{asset.label}</div>
+              <div className="text-[11px] text-slate-400">{asset.desc}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* 4 Core Concepts */}
+        <div className="pt-4 border-t border-slate-800/80 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          {CORE_CONCEPTS.map((c, idx) => (
+            <div key={idx} className="bg-slate-950 p-5 rounded-2xl border border-slate-800">
+              <div className="font-bold text-cyan-300 text-sm mb-1">{c.name}</div>
+              <div className="text-slate-300 text-xs leading-relaxed">{c.desc}</div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* 6-STEP EXECUTION PROCESS */}
-      <section>
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">
-            3. 6단계 실행 로드맵 (Co-Build 방식)
+      {/* 05. OMAZU AX DIAGNOSTIC */}
+      <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-2">
+            OMAZU AX DIAGNOSTIC (4대 영역 &amp; 정밀도)
           </h2>
-          <p className="text-xs sm:text-sm text-slate-300">
-            진단 결과가 교육·PoC·구축으로 끊기지 않고 이어집니다.
+          <p className="text-xs sm:text-sm text-slate-400">
+            AI 활용역량 진단은 7개 하위역량, 총 28문항 및 Practitioner / Executive 2종 결과지로 구성됩니다.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {CONSULTING_STEPS.map((s, idx) => (
-            <div key={idx} className="glass-card p-6 rounded-2xl border border-slate-800 relative">
-              <div className="text-xs font-mono font-bold text-cyan-400 mb-2">
-                {s.step}
-              </div>
-              <h3 className="text-lg font-bold text-white mb-2">
-                {s.title}
-              </h3>
-              <p className="text-xs text-slate-300 mb-4 leading-relaxed">
-                {s.desc}
-              </p>
-              <div className="pt-3 border-t border-slate-800 text-xs text-cyan-300 flex items-center gap-1.5 font-mono">
-                <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
-                <span>산출물: {s.output}</span>
-              </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+          {DIAGNOSTIC_DOMAINS.map((d, idx) => (
+            <div key={idx} className="glass-card p-6 rounded-2xl border border-slate-800 space-y-2">
+              <div className="font-bold text-cyan-400 text-sm">0{idx + 1}. {d.domain}</div>
+              <p className="text-slate-300">{d.desc}</p>
+              <div className="pt-2 text-[11px] text-slate-400 font-mono">결과 연결: {d.result}</div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* BUSINESS VALUE VALIDATION & SECURITY IMAGE */}
-      <section className="bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
-          
-          <div className="lg:col-span-7 p-8 lg:p-12 space-y-6">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-blue-950 text-cyan-300 text-xs font-mono font-bold border border-blue-800">
-              <TrendingUp className="w-4 h-4 text-cyan-400" />
-              BUSINESS VALUE VALIDATION
-            </div>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
-              PoC 성공보다 Business Value를 검증합니다
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              PoC가 작동했다는 이유만으로 도입하지 않습니다. 기존 업무와 동일한 범위·입력자료·품질기준을 두고 As-Is Baseline과 비교해 실제 개선효과(처리시간, 품질, 위험)를 측정합니다.
-            </p>
-
-            <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2 text-xs">
-              <div className="font-bold text-white flex justify-between">
-                <span>필수 검증지표:</span>
-                <span className="text-cyan-400">처리시간 · 품질 · 위험</span>
-              </div>
-              <div className="font-bold text-white flex justify-between">
-                <span>선택·확장 지표:</span>
-                <span className="text-cyan-400">비용 · 생산성 · 의사결정 품질</span>
-              </div>
-              <div className="font-bold text-white flex justify-between">
-                <span>최종 판단 판정:</span>
-                <span className="text-green-400 font-mono">Go · Conditional Go · No-Go</span>
-              </div>
-            </div>
-
-            <div className="pt-2">
-              <button
-                onClick={openInquiryModal}
-                className="py-4 px-8 bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold text-sm rounded-xl shadow-lg shadow-blue-500/25 transition-all"
-              >
-                기업 AX 진단 및 컨설팅 문의하기
-              </button>
-            </div>
-          </div>
-
-          <div className="lg:col-span-5 h-full relative min-h-[300px]">
-            <img 
-              src="/images/security_data_trust.jpg" 
-              alt="Enterprise Trust Security Shield" 
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-transparent to-transparent lg:block hidden" />
-          </div>
-
+      {/* 07. OMAZU FDE CO-BUILD */}
+      <section className="bg-slate-900 border border-slate-800 rounded-3xl p-8 lg:p-12 space-y-6">
+        <div className="space-y-2">
+          <span className="text-xs font-mono font-bold px-3 py-1 bg-cyan-950 text-cyan-400 rounded border border-cyan-800">
+            OMAZU FDE CO-BUILD
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+            현장밀착형 Forward Deployed Engineer 공동구축
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-4xl">
+            검증된 과제를 실제 데이터·문서·업무시스템과 연결해 현업과 함께 Agent·Workflow를 구현하고 구축 PM·운영·확산까지 연결하는 OMAZU의 고도 실행 Delivery Model입니다.
+          </p>
         </div>
       </section>
+
+      {/* 08. BUSINESS VALUE VALIDATION */}
+      <section className="glass-card p-8 lg:p-12 rounded-3xl border border-blue-800/60 space-y-6 text-center">
+        <h3 className="text-2xl font-extrabold text-white">
+          Business Value Validation &amp; 최종 Gate
+        </h3>
+        <p className="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          As-Is 기준선 대비 시간, 품질, 위험, 비용 등의 개선효과와 선결조건을 종합 점검하여 최종 Gate 판정(Go / Conditional Go / No-Go)을 결정합니다.
+        </p>
+
+        <div className="flex flex-wrap justify-center gap-4 text-xs font-mono font-bold pt-2">
+          <span className="px-4 py-2 bg-emerald-950 text-emerald-400 rounded-xl border border-emerald-800">Go (전사 확산)</span>
+          <span className="px-4 py-2 bg-amber-950 text-amber-400 rounded-xl border border-amber-800">Conditional Go (조건부 보완)</span>
+          <span className="px-4 py-2 bg-rose-950 text-rose-400 rounded-xl border border-rose-800">No-Go (보류 및 수정을 통한 보완)</span>
+        </div>
+
+        <div className="pt-4">
+          <button
+            onClick={openInquiryModal}
+            className="px-8 py-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg"
+          >
+            Consulting 프로젝트 상담 신청하기
+          </button>
+        </div>
+      </section>
+
     </div>
   );
 };
